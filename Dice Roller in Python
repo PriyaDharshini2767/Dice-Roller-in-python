@@ -1,0 +1,36 @@
+import random
+
+def roll_dice(num_dice, num_sides):
+    """
+    Roll the specified number of dice with the given number of sides.
+    
+    Args:
+    - num_dice (int): Number of dice to roll.
+    - num_sides (int): Number of sides on each die.
+    
+    Returns:
+    - list: List containing the result of each dice roll.
+    """
+    return [random.randint(1, num_sides) for _ in range(num_dice)]
+
+def main():
+    print("Welcome to the Dice Roller!")
+    while True:
+        num_dice = int(input("Enter the number of dice to roll: "))
+        num_sides = int(input("Enter the number of sides on each die: "))
+        
+        if num_dice <= 0 or num_sides <= 0:
+            print("Invalid input. Number of dice and number of sides must be positive integers.")
+            continue
+        
+        print("Rolling {} dice with {} sides each...".format(num_dice, num_sides))
+        result = roll_dice(num_dice, num_sides)
+        print("Result:", result)
+        
+        choice = input("Do you want to roll again? (yes/no): ").lower()
+        if choice != "yes":
+            print("Thanks for using the Dice Roller!")
+            break
+
+if _name_ == "_main_":
+    main()
